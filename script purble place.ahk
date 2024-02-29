@@ -1,4 +1,6 @@
+stop=0
 m::
+stop=0
 Loop
 {
 MouseClick, Left, 1310, 164, 1  ;cliking the skins
@@ -15,13 +17,19 @@ MouseClick, Left, 877, 735, 1  ;clicking the correct button
 MouseClick, Left, 57, 140, 1 ;backing to menu
 MouseClick, Left, 1443, 525, 1 ;entering again to game
 Sleep, 100 ;delay because sometimes the game does not register your click
-b:: ;setting up a key to stop the loop
+if stop=1
+{
 break
 return
+}
+
 }
 return
 n::
 MouseGetPos x, y ;getting the exactly position of the skins
 MsgBox, x=%x% - y=%y% 
+return
+b::
+stop:=1
 return
 
